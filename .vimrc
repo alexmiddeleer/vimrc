@@ -1,0 +1,70 @@
+" enable plugins 
+:filetype plugin on
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set title
+syntax on
+set background=dark
+set number
+set ignorecase
+set smartcase
+set wildignore+=*.svn,*/tmp/*,git,*/node_modules/*
+set hls
+set colorcolumn=90
+set directory=$HOME/.vim/swapfiles//
+set nowrap
+set statusline+=%F\ %l\:%c
+
+" colo desert
+" colo wombat256
+" colo zenburn
+colo gruvbox
+autocmd BufNewFile,BufRead *.jbuilder set syntax=ruby
+
+autocmd FileType c,cpp,java,scala,php let b:comment_leader = '//'
+autocmd FileType sh,ruby,python       let b:comment_leader = '#'
+autocmd FileType conf,fstab           let b:comment_leader = '#'
+autocmd FileType tex                  let b:comment_leader = '%'
+autocmd FileType mail                 let b:comment_leader = '>'
+autocmd FileType vim                  let b:comment_leader = '"'
+
+let mapleader = "-"
+nnoremap <leader>ev :split $MYVIMRC<cr>:normal G<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ss :mksession! ~/vimscripts/last.vim<cr>
+nnoremap <leader>ls :source ~/vimscripts/last.vim<cr>
+nnoremap <leader>diff :diffthis <cr>  <C-w><C-w> :diffthis <cr>
+nnoremap <leader>cc :set cursorcolumn!<cr>
+nnoremap <leader>trim :%s/\s*$//g<cr>
+nnoremap <Leader>S ?{<CR>jV/^[\t ]*[}\.]<CR>k:sort<CR>:noh<CR>
+
+" set -gdif to git diff current file and gcat to compare side by side
+nnoremap <leader>gdif :new \| set buftype=nowrite \| read !git diff #<cr>:set ft=diff<cr>
+nnoremap <leader>gcat :new \| set buftype=nowrite \| read !git show HEAD:#<cr>:diffthis<cr><C-w><C-w>:diffthis<cr>
+
+call plug#begin()
+Plug 'neomake/neomake'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'tpope/vim-commentary'
+Plug 'mileszs/ack.vim'
+call plug#end()
+
+"Snipmate
+nnoremap <leader>snip :split ~/.vim/plugged/vim-snipmate/snippets/<cr>
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['handlebars'] = 'html.handlebars'
+
+"Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_scss_enabled_makers = ['stylelint']
+call neomake#configure#automake('rnw', 750)
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
