@@ -54,6 +54,8 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': './install --all --bin' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "Snipmate
