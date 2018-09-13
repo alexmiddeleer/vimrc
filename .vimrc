@@ -57,6 +57,7 @@ Plug 'mileszs/ack.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'do': './install --all --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 "Snipmate
