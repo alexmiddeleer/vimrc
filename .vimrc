@@ -42,6 +42,7 @@ nnoremap <leader>trim :%s/\s*$//g<cr>
 nnoremap <Leader>S ?{<CR>jV/^[\t ]*[}\.]<CR>k:sort<CR>:noh<CR>
 nnoremap <Leader>o :e %:h <CR>
 nnoremap <Leader>v "+P<CR>
+nnoremap <Leader>f :Fixmyjs<CR>
 
 " set -gdif to git diff current file and gcat to compare side by side
 nnoremap <leader>gdif :new \| set buftype=nowrite \| read !git diff #<cr>:set ft=diff<cr>
@@ -58,6 +59,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'do': './install --all --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
+Plug 'ruanyl/vim-fixmyjs'
 call plug#end()
 
 "Snipmate
