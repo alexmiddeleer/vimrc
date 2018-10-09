@@ -70,6 +70,7 @@ let g:snipMate.scope_aliases['handlebars'] = 'html.handlebars'
 
 "Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint', 'jshint']
 let g:neomake_typescript_enabled_makers = ['tsc']
 let g:neomake_scss_enabled_makers = ['stylelint']
 call neomake#configure#automake('rnw', 750)
