@@ -6,3 +6,6 @@ stylelint
 
 To install vim-plug and colors, just symlink the autoload 
 directory so vim canfind it. Then run `:PlugInstall` in vim.
+
+in nvim, the right place is ~/.local/share/nvim/site/autoload.
+in gvim, it's ~/vimfiles/autoload.
