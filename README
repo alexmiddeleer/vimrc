@@ -4,5 +4,5 @@ ag
 eslint
 stylelint
 
-
-
+To install vim-plug and colors, just symlink the autoload 
+directory so vim canfind it. Then run `:PlugInstall` in vim.
