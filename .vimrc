@@ -1,6 +1,7 @@
 " enable plugins 
 :filetype plugin on
 
+set guifont=Consolas:h16:cANSI:qDRAFT
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -17,10 +18,6 @@ set colorcolumn=90
 set directory=$HOME/.vim/swapfiles//
 set nowrap
 set statusline+=%F\ %l\:%c
-
-" Allow project specific vimrcs
-set exrc
-set secure
 
 " colo desert
 " colo wombat256
@@ -47,36 +44,25 @@ nnoremap <Leader>S ?{<CR>jV/^[\t ]*[}\.]<CR>k:sort<CR>:noh<CR>
 nnoremap <Leader>o :e %:h <CR>
 nnoremap <Leader>v "+P<CR>
 nnoremap <Leader>f :Fixmyjs<CR>
+nnoremap <c-p> :GFiles<cr>
 
 " set -gdif to git diff current file and gcat to compare side by side
 nnoremap <leader>gdif :new \| set buftype=nowrite \| read !git diff #<cr>:set ft=diff<cr>
 nnoremap <leader>gcat :new \| set buftype=nowrite \| read !git show HEAD:#<cr>:diffthis<cr><C-w><C-w>:diffthis<cr>
 
 call plug#begin()
-Plug 'neomake/neomake'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
 Plug 'tpope/vim-commentary'
-Plug 'mileszs/ack.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'junegunn/fzf', { 'do': './install --all --bin' }
-Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
-Plug 'ruanyl/vim-fixmyjs'
+Plug 'mileszs/ack.vim'
+Plug 'C:\Users\AMiddeleer\Scripts\fzf.exe'
+Plug 'junegunn/fzf.vim'
 call plug#end()
-
+"
 "Snipmate
 nnoremap <leader>snip :split ~/.vim/plugged/vim-snipmate/snippets/<cr>
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['handlebars'] = 'html.handlebars'
-
-"Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_enabled_makers = ['tsc']
-let g:neomake_scss_enabled_makers = ['stylelint']
-call neomake#configure#automake('rnw', 750)
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
