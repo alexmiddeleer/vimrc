@@ -60,10 +60,13 @@ Plug 'C:\Users\AMiddeleer\Scripts\fzf.exe'
 Plug 'junegunn/fzf.vim'
 Plug 'sk1418/QFGrep'
 Plug 'vim-syntastic/syntastic'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 call plug#end()
 "
 "Snipmate
-nnoremap <leader>snip :split ~/.vim/plugged/vim-snipmate/snippets/<cr>
+nnoremap <leader>snip :split ~/vimfiles/plugged/vim-snipmate/snippets/<cr>
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['handlebars'] = 'html.handlebars'
