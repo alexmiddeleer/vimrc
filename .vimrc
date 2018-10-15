@@ -12,6 +12,7 @@ set background=dark
 set number
 set ignorecase
 set smartcase
+set bs=indent,eol,start
 set wildignore+=*.svn,*/tmp/*,git,*/node_modules/*
 set hls
 set colorcolumn=90
