@@ -1,7 +1,7 @@
 " enable plugins 
 :filetype plugin on
 
-set guifont=Consolas:h16:cANSI:qDRAFT
+set guifont=Consolas:h14:cANSI:qDRAFT
 set expandtab
 set tabstop=2
 set shiftwidth=2
