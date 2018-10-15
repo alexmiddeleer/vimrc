@@ -18,6 +18,7 @@ set colorcolumn=90
 set directory=$HOME/.vim/swapfiles//
 set nowrap
 set statusline+=%F\ %l\:%c
+set nofixeol
 
 " colo desert
 " colo wombat256
