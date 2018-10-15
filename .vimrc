@@ -57,6 +57,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'C:\Users\AMiddeleer\Scripts\fzf.exe'
 Plug 'junegunn/fzf.vim'
+Plug 'sk1418/QFGrep'
 call plug#end()
 "
 "Snipmate
