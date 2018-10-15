@@ -58,6 +58,7 @@ Plug 'mileszs/ack.vim'
 Plug 'C:\Users\AMiddeleer\Scripts\fzf.exe'
 Plug 'junegunn/fzf.vim'
 Plug 'sk1418/QFGrep'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 "
 "Snipmate
@@ -69,3 +70,13 @@ let g:snipMate.scope_aliases['handlebars'] = 'html.handlebars'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
