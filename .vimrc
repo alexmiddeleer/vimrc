@@ -47,6 +47,8 @@ nnoremap <Leader>S ?{<CR>jV/^[\t ]*[}\.]<CR>k:sort<CR>:noh<CR>
 nnoremap <Leader>o :e %:h <CR>
 nnoremap <Leader>v "+P<CR>
 nnoremap <Leader>f :Fixmyjs<CR>
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-a> :Ack<cr>
 
 " set -gdif to git diff current file and gcat to compare side by side
 nnoremap <leader>gdif :new \| set buftype=nowrite \| read !git diff #<cr>:set ft=diff<cr>
@@ -64,6 +66,8 @@ Plug 'junegunn/fzf', { 'do': './install --all --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'ruanyl/vim-fixmyjs'
+Plug 'sk1418/QFGrep'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "Snipmate
