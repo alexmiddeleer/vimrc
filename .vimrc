@@ -55,7 +55,6 @@ nnoremap <leader>gdif :new \| set buftype=nowrite \| read !git diff #<cr>:set ft
 nnoremap <leader>gcat :new \| set buftype=nowrite \| read !git show HEAD:#<cr>:diffthis<cr><C-w><C-w>:diffthis<cr>
 
 call plug#begin()
-Plug 'neomake/neomake'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
@@ -65,9 +64,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'do': './install --all --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
-Plug 'ruanyl/vim-fixmyjs'
 Plug 'sk1418/QFGrep'
-Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
 call plug#end()
 
 "Snipmate
@@ -76,11 +74,12 @@ let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['handlebars'] = 'html.handlebars'
 
-"Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_enabled_makers = ['tsc']
-let g:neomake_scss_enabled_makers = ['stylelint']
-call neomake#configure#automake('rnw', 750)
+"Ale
+" Fix files with prettier, and then ESLint.
+let g:ale_fixers = ['prettier']
+" " Equivalent to the above.
+" let g:ale_fixers = {'javascript': ['prettier'], 'css': ['prettier']}
+let g:ale_fix_on_save = 1
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
