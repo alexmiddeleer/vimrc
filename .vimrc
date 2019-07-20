@@ -46,7 +46,7 @@ nnoremap <leader>trim :%s/\s*$//g<cr>
 nnoremap <Leader>S ?{<CR>jV/^[\t ]*[}\.]<CR>k:sort<CR>:noh<CR>
 nnoremap <Leader>o :e %:h <CR>
 nnoremap <Leader>v "+P<CR>
-nnoremap <Leader>f :Fixmyjs<CR>
+nnoremap <Leader>f :ALEFix<CR>
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-a> :Ack<cr>
 
@@ -84,3 +84,6 @@ let g:ale_fix_on_save = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" Make FZF ignore node modules
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
