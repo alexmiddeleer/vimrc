@@ -8,7 +8,8 @@ set autoindent
 set title
 syntax on
 set background=dark
-set number
+set relativenumber
+set numberwidth=3
 set ignorecase
 set smartcase
 set wildignore+=*.svn,*/tmp/*,git,*/node_modules/*
@@ -17,6 +18,8 @@ set colorcolumn=90
 set directory=$HOME/.vim/swapfiles//
 set nowrap
 set statusline+=%F\ %l\:%c
+" Fix Ack dotstar commands while using Fish. https://github.com/mileszs/ack.vim/issues/169
+set shell=bash
 
 " Allow project specific vimrcs
 set exrc
@@ -49,6 +52,11 @@ nnoremap <Leader>v "+P<CR>
 nnoremap <Leader>f :ALEFix<CR>
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-a> :Ack<cr>
+nnoremap <esc> :noh<return><esc>
+nnoremap <Leader>t :TestNearest<CR>
+nnoremap <Leader>f :TestFile<CR>
+nnoremap <Leader>s :TestSuite<CR>
+
 
 " set -gdif to git diff current file and gcat to compare side by side
 nnoremap <leader>gdif :new \| set buftype=nowrite \| read !git diff #<cr>:set ft=diff<cr>
@@ -57,7 +65,7 @@ nnoremap <leader>gcat :new \| set buftype=nowrite \| read !git show HEAD:#<cr>:d
 call plug#begin()
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
 Plug 'leafgarland/typescript-vim'
@@ -66,6 +74,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'sk1418/QFGrep'
 Plug 'w0rp/ale'
+Plug 'honza/vim-snippets'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'tpope/vim-surround'
+Plug 'posva/vim-vue'
+Plug 'mikewest/vimroom'
+Plug 'janko-m/vim-test'
 call plug#end()
 
 "Snipmate
@@ -87,3 +104,19 @@ endif
 
 " Make FZF ignore node modules
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+"Ultisnips
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=['ultisnips']
+
+let test#strategy = "neovim"
+
+augroup test
+  autocmd!
+  autocmd BufWrite * if test#exists() |
+    \   TestFile |
+    \ endif
+augroup END
